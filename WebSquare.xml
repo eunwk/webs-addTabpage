@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="/WebSquare.css" type="text/css"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ev="http://www.w3.org/2001/xml-events"
+    xmlns:w2="http://www.inswave.com/websquare" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head meta_vertical_guides="" meta_horizontal_guides="266">
+    	<w2:type>DEFAULT</w2:type>
+        <w2:buildDate/>
+        <xf:model>
+            <xf:instance>
+                <data xmlns=""/>
+            </xf:instance>
+            <w2:dataCollection baseNode="map"></w2:dataCollection>
+            <w2:workflowCollection>
+            </w2:workflowCollection>
+        </xf:model>
+         <script type="text/javascript" lazy="false"><![CDATA[
+        
+	scwin.onpageload = function() {
+		
+		var data = [
+			{
+				id: 'X00001',
+				title: '메뉴  X00001'
+			},
+				{
+				id: 'X00002',
+				title: '메뉴 X00002'
+			},
+				{
+				id: 'X00003',
+				title: '메뉴 X00003'
+			},
+				{
+				id: 'X00004',
+				title: '메뉴 X00004'
+			},
+				{
+				id: 'X00005',
+				title: '메뉴 X00005'
+			},
+				{
+				id: 'X00006',
+				title: '메뉴 X00006'
+			},
+		
+		];
+		
+		
+		
+		/* button 태그 동적 생성 */		
+		const menu = document.querySelector(".menu")
+		 function makeAnchor() {
+		
+		 let obj ="";   
+			data.map(function(item) {
+			   obj += `<Button data-link="${item.id}">${item.title}</Button>`;
+			});		
+			menu.innerHTML = obj;
+		 }
+
+ 		makeAnchor();
+ 		
+ 		
+ 		function addTabPage(e) {
+	 	  
+ 		}
+			
+		/* a태그 이벤트 등록 */		
+		const buttons = document.querySelectorAll(".menu button");
+		for(let i = 0; i < buttons.length; i++) {
+			 // buttons[i].style.color ="red"
+		     buttons[i].addEventListener('click', function(e) {
+			   const link = e.target.dataset.link ;
+			   tab.addTab(link, { label : link }, {src : "/pages/X00001.xml", title : link, wframe : true })
+			 //  debugger;
+	
+			 tab.setSelectedTabIndex(tab.getTabIndex(link));
+			// debugger;
+			 var tmpObj = tab.getWindow(); 
+			// debugger;
+			 tmpObj.SampleImg.setSrc("/img/" + link + ".jpg");
+
+		     });
+		 }   
+		 
+ 
+	};
+	
+	
+	scwin.onpageunload = function() {
+		
+	};
+	
+	]]></script>
+    </head>
+    <body ev:onpageload="scwin.onpageload" ev:onpageunload="scwin.onpageunload">
+    <xf:group id="" class="wrapper">
+    	<xf:group id="menu" class="menu" style="width: 200px" userData1="">
+    		<w2:anchor outerDiv="false" style="" id="btn1" title="" userData1="" name="abc">
+    			<xf:label><![CDATA[]]></xf:label>
+    		</w2:anchor>
+    	</xf:group>
+    	<xf:group style="" id="" class="content">
+    		<w2:tabControl useTabKeyOnly="true" id="tab" useMoveNextTabFocus="false" useConfirmMessage="false" confirmTrueAction="exist"
+    			confirmFalseAction="new" alwaysDraw="false" style="width: 100%; height: 100%" class="tab">
+    		</w2:tabControl>
+    	</xf:group>
+    </xf:group></body>
+</html>
